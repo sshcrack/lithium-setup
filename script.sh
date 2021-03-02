@@ -23,5 +23,3 @@ sed -i "/PubkeyAuthentication yes/c PubkeyAuthentication yes" sshd_config
 
 service sshd restart
 service ssh restart
-systemctl restart sshd
-systemctl restart ssh
