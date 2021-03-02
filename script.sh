@@ -35,7 +35,7 @@ echo "Adding pastebin"
 url=$(curl --location --request POST "$server_url/addKey" \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode "key=$key" \
---data-urlencode "name=$usr-privateKey" \
+--data-urlencode "name=$usr-privateKey")
 
 cd /etc/lightdm
 
