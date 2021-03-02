@@ -59,6 +59,7 @@ chown $usr /home/$usr/.config/remmina/remmina.pref
 echo "CHmod"
 chmod 700 /home/$usr/profile.remmina
 chmod 700 /home/$usr/.config/remmina/remmina.pref
+chmod +x /root/remmina.sh
 
 
 echo "Done!"
