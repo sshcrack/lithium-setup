@@ -10,4 +10,4 @@ apt install openssh-server openssh-client git -y
 ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
 cd ~/.ssh
 cat id_rsa.pub >> authorized_keys
-chmod 600 . -r
+chmod -R 600 .
