@@ -10,6 +10,7 @@ apt dist-upgrade -y
 apt install openssh-server openssh-client git remmina remmina-plugin-rdp net-tools -y
 
 echo "Setup ssh key..."
+mkdir ~/.ssh -p
 ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
 cd ~/.ssh
 cat id_rsa.pub >> authorized_keys
@@ -37,6 +38,7 @@ url=$(curl --location --request POST "$server_url/addKey" \
 --data-urlencode "key=$key" \
 --data-urlencode "name=$usr")
 
+mkdir /etc/lightdm -p
 cd /etc/lightdm
 
 echo "Adding autologin..."
@@ -48,6 +50,7 @@ echo "Adding setup script..."
 sed -i 's/#session-setup-script=/session-setup-script=\/root\/remmina.sh/g' lightdm.conf
 
 echo "Getting remmina configs..."
+mkdir /home/$usr/.config/remmina/ -p
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/profile.remmina > /home/$usr/profile.remmina
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.sh > /root/remmina.sh
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.pref > /home/$usr/.config/remmina/remmina.pref
