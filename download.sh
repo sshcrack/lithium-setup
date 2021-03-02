@@ -9,3 +9,5 @@ rm repo.zip
 cd lithium-setup-master
 chmod +x script.sh
 sudo ./script.sh
+cd ..
+rm -r lithium-setup-master
