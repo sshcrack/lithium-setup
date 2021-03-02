@@ -51,6 +51,7 @@ echo "Getting remmina configs..."
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/profile.remmina > /home/$usr/profile.remmina
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.sh > /root/remmina.sh
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.pref > /home/$usr/.config/remmina/remmina.pref
+cp /home/$usr/.config/remmina/remmina.pref /root/.config/remmina/remmina.pref
 
 echo "CHown"
 chown $usr /home/$usr/profile.remmina
