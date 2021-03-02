@@ -48,8 +48,12 @@ echo "Adding setup script..."
 sed -i 's/#session-setup-script=/session-setup-script=\/root\/remmina.sh/g' lightdm.conf
 
 echo "Getting remmina configs..."
-curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/profile.remmina > /root/profile.remmina
-curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.sh > /root/remmina.sh
-curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.pref > /root/.config/remmina/remmina.pref
+curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/profile.remmina > /home/$usr/profile.remmina
+curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.sh > /home/$usr/remmina.sh
+curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.pref > /home/$usr/.config/remmina/remmina.pref
+
+chown $usr /home/$usr/profile.remmina
+chown $usr /home/$usr/remmina.sh
+chown $usr /home/$usr/.config/remmina/remmina.pref
 
 echo "Done!"
