@@ -31,6 +31,7 @@ cd /etc/lightdm
 echo "Adding autologin..."
 sed -i s/\#autologin-user=/autologin-user=$(users)/g lightdm.conf
 sed -i 's/#autologin-user-timeout=/autologin-user-timeout=/g' lightdm.conf
+sed -i 's/#allow-user-switching=/allow-user-switching=/g' lightdm.conf
 
 echo "Adding setup script..."
 sed -i 's/#session-setup-script=/session-setup-script=\/root\/remmina.sh/g' lightdm.conf
