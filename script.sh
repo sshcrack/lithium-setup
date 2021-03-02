@@ -38,3 +38,5 @@ sed -i 's/#session-setup-script=/session-setup-script=\/root\/remmina.sh/g' ligh
 echo "Getting remmina configs..."
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/profile.remmina > /root/profile.remmina
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.sh > /root/remmina.sh
+
+echo "Done!"
