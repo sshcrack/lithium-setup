@@ -10,8 +10,7 @@ apt install openssh-server openssh-client git -y
 ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
 cd ~/.ssh
 cat id_rsa.pub >> authorized_keys
-chmod -R 600 .
-chmod 700 authorized_keys
+chmod -R 700 .
 cd /etc/ssh/
 
 sed -i "/PasswordAuthentication no/c PasswordAuthentication no" sshd_config
