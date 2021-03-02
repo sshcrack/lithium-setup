@@ -11,3 +11,17 @@ ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
 cd ~/.ssh
 cat id_rsa.pub >> authorized_keys
 chmod -R 600 .
+chmod 700 authorized_keys
+cd /etc/ssh/
+
+sed -i "/PasswordAuthentication no/c PasswordAuthentication no" sshd_config
+sed -i "/RSAAuthentication no/c RSAAuthentication yes" sshd_config
+sed -i "/PubkeyAuthentication no/c PubkeyAuthentication yes" sshd_config
+sed -i "/PasswordAuthentication yes/c PasswordAuthentication no" sshd_config
+sed -i "/RSAAuthentication yes/c RSAAuthentication yes" sshd_config
+sed -i "/PubkeyAuthentication yes/c PubkeyAuthentication yes" sshd_config
+
+service sshd restart
+service ssh restart
+systemctl restart sshd
+systemctl restart ssh
