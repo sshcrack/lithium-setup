@@ -57,3 +57,7 @@ gateway_domain=
 disableclipboard=0
 ssh_privatekey=
 gwtransp=http
+window_width=640
+viewmode=1
+window_maximize=0
+window_height=480
