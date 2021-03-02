@@ -54,6 +54,9 @@ mkdir /home/$usr/.config/remmina/ -p
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/profile.remmina > /home/$usr/profile.remmina
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.sh > /root/remmina.sh
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.pref > /home/$usr/.config/remmina/remmina.pref
+
+
+mkdir /root/.config/remmina/ -p
 cp /home/$usr/.config/remmina/remmina.pref /root/.config/remmina/remmina.pref
 
 echo "CHown"
