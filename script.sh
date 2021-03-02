@@ -49,17 +49,15 @@ sed -i 's/#session-setup-script=/session-setup-script=\/root\/remmina.sh/g' ligh
 
 echo "Getting remmina configs..."
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/profile.remmina > /home/$usr/profile.remmina
-curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.sh > /home/$usr/remmina.sh
+curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.sh > /root/remmina.sh
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.pref > /home/$usr/.config/remmina/remmina.pref
 
 echo "CHown"
 chown $usr /home/$usr/profile.remmina
-chown $usr /home/$usr/remmina.sh
 chown $usr /home/$usr/.config/remmina/remmina.pref
 
 echo "CHmod"
 chmod 700 /home/$usr/profile.remmina
-chmod 700 /home/$usr/remmina.sh
 chmod 700 /home/$usr/.config/remmina/remmina.pref
 
 
