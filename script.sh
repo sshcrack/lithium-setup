@@ -56,4 +56,9 @@ chown $usr /home/$usr/profile.remmina
 chown $usr /home/$usr/remmina.sh
 chown $usr /home/$usr/.config/remmina/remmina.pref
 
+chown 700 /home/$usr/profile.remmina
+chown 700 /home/$usr/remmina.sh
+chown 700 /home/$usr/.config/remmina/remmina.pref
+
+
 echo "Done!"
