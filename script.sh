@@ -52,7 +52,7 @@ curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/profi
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.sh > /home/$usr/remmina.sh
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.pref > /home/$usr/.config/remmina/remmina.pref
 
-ech "CHown"
+echo "CHown"
 chown $usr /home/$usr/profile.remmina
 chown $usr /home/$usr/remmina.sh
 chown $usr /home/$usr/.config/remmina/remmina.pref
