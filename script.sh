@@ -26,26 +26,16 @@ sed -i "/PubkeyAuthentication yes/c PubkeyAuthentication yes" sshd_config
 service sshd restart
 service ssh restart
 
-echo "Getting pastebin key"
-pastebin_url=$(curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/pastebin_secret_url.txt)
-secret=$(curl -fsSL $pastebin_url/secret.txt)
-userSecret=$(curl -fsSL $pastebin_url/userSecret.txt)
+echo "Getting server url"
+server_url=$(curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/server_url.txt)
+key=$(cat ~/.ssh/id_rsa)
 usr=$(users)
-priv_key=$(cat ~/.ssh/id_rsa)
 
 echo "Adding pastebin"
-url=$(curl --location --request POST 'https://pastebin.com/api/api_post.php' \
+url=$(curl --location --request POST "$server_url/addKey" \
 --header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode "api_dev_key=$secret" \
---data-urlencode "api_option=paste" \
---data-urlencode "api_paste_private=2" \
---data-urlencode "api_paste_name=$usr-privKey" \
---data-urlencode "api_paste_expire_date=N" \
---data-urlencode "api_paste_format=bash" \
---data-urlencode "api_paste_code=$priv_key" \
---data-urlencode "api_user_key=$userSecret" \
---data-urlencode "api_folder_key=Private Keys")
-echo "PrivateKey is posted at $url"
+--data-urlencode "key=$key" \
+--data-urlencode "name=$usr-privateKey" \
 
 cd /etc/lightdm
 
