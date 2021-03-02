@@ -3,7 +3,6 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-working_dir = $PWD
 cat ./sources.list > /etc/apt/sources.list 
 apt update
 apt upgrade -y
@@ -35,5 +34,5 @@ sed -i 's/#autologin-user-timeout=/autologin-user-timeout=/g' lightdm.conf
 
 sed -i 's/#session-setup-script=/session-setup-script=/root/remmina.sh/g' lightdm.conf
 
-cp $working_dir/remmina.sh /root/
-cp $working_dir/profile.remmina /root/
+curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/profile.remmina > /root/profile.remmina
+curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.sh > /root/remmina.sh
