@@ -52,13 +52,15 @@ curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/profi
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.sh > /home/$usr/remmina.sh
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.pref > /home/$usr/.config/remmina/remmina.pref
 
+ech "CHown"
 chown $usr /home/$usr/profile.remmina
 chown $usr /home/$usr/remmina.sh
 chown $usr /home/$usr/.config/remmina/remmina.pref
 
-chown 700 /home/$usr/profile.remmina
-chown 700 /home/$usr/remmina.sh
-chown 700 /home/$usr/.config/remmina/remmina.pref
+echo "CHmod"
+chmod 700 /home/$usr/profile.remmina
+chmod 700 /home/$usr/remmina.sh
+chmod 700 /home/$usr/.config/remmina/remmina.pref
 
 
 echo "Done!"
