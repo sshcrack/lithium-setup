@@ -31,9 +31,9 @@ cd /etc/lightdm
 
 #Set Autlogin
 sed -i s/\#autologin-user=/autologin-user=$(users)/g lightdm.conf
-sed -i s/\#autologin-user-timeout=/autologin-user-timeout=/g lightdm.conf
+sed -i 's/#autologin-user-timeout=/autologin-user-timeout=/g' lightdm.conf
 
-sed -i 's/\#session-setup-script=/session-setup-script=/root/remmina.sh/g' lightdm.conf
+sed -i 's/#session-setup-script=/session-setup-script=/root/remmina.sh/g' lightdm.conf
 
 cp $working_dir/remmina.sh /root/
 cp $working_dir/profile.remmina /root/
