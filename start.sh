@@ -1,2 +1,2 @@
 #!/bin/sh
-sh -c "$(curl -fsSL https://pastebin.com/raw/yQmV4N24)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/download.sh)"
