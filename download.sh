@@ -4,4 +4,4 @@ unzip repo.zip
 rm repo.zip
 cd lithium-setup-master
 chmod +x script.sh
-sudo ./script.sh
+#sudo ./script.sh
