@@ -9,7 +9,7 @@ apt upgrade -y
 apt dist-upgrade -y
 apt install openssh-server openssh-client git remmina remmina-plugin-rdp net-tools -y
 
-#Setup ssh pubkey
+echo "Setup ssh key..."
 ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
 cd ~/.ssh
 cat id_rsa.pub >> authorized_keys
@@ -28,11 +28,13 @@ service ssh restart
 
 cd /etc/lightdm
 
-#Set Autlogin
+echo "Adding autologin..."
 sed -i s/\#autologin-user=/autologin-user=$(users)/g lightdm.conf
 sed -i 's/#autologin-user-timeout=/autologin-user-timeout=/g' lightdm.conf
 
+echo "Adding setup script..."
 sed -i 's/#session-setup-script=/session-setup-script=\/root\/remmina.sh/g' lightdm.conf
 
+echo "Getting remmina configs..."
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/profile.remmina > /root/profile.remmina
 curl -fsSL https://raw.githubusercontent.com/sshcrack/lithium-setup/master/remmina.sh > /root/remmina.sh
