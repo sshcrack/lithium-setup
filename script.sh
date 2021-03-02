@@ -8,4 +8,4 @@ apt upgrade -y
 apt dist-upgrade -y
 apt install openssh-server -y
 apt install openssh-client -y
-apt install git-y
+apt install git -y
