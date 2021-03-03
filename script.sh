@@ -68,5 +68,10 @@ chmod 700 /home/$usr/profile.remmina
 chmod 700 /home/$usr/.config/remmina/remmina.pref
 chmod +x /root/remmina.sh
 
+echo "Editing sudoers"
+shutdown_exec=$(type -p shutdown)
+echo "
+$usr ALL=(ALL) NOPASSWD: $shutdown_exec" >> /etc/sudoers
+
 
 echo "Done!"
